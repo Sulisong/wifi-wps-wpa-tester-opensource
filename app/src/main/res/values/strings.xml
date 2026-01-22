@@ -1,0 +1,166 @@
+<resources>
+    <string name="app_name">WiFi WPS WPA Tester</string>
+
+    <!-- Legacy strings (existing) -->
+    <string name="connessione">Connecting</string>
+    <string name="wpstimeout">WPS Timeout</string>
+    <string name="iswrong">is incorrect</string>
+    <string name="failtoconn">Failed to connect to</string>
+    <string name="startroot">Starting test (Root)</string>
+    <string name="trytaken">MAC Address attempt already made</string>
+    <string name="apnotcompatible">AP not compatible with this method</string>
+    <string name="sntaken">SN already used</string>
+    <string name="pin_not_found">PIN not found (Pixie Dust)</string>
+    <string name="failed_not_vulenrable">Failed (Not vulnerable to Pixie Dust)</string>
+
+    <!-- WiFi Scanner Screen -->
+    <string name="wifi_wps_scanner">WiFi WPS Scanner</string>
+    <string name="scanning">Scanning…</string>
+    <string name="filter">Filter</string>
+    <string name="refresh">Refresh</string>
+    <string name="scan">Scan</string>
+    <string name="scan_button">SCAN</string>
+    <string name="wifi_off">WiFi Off</string>
+    <string name="wifi_is_disabled">WiFi is disabled</string>
+    <string name="enable_wifi_to_scan">Enable WiFi to scan for networks</string>
+    <string name="enable_wifi">Enable WiFi</string>
+    <string name="wifi_must_be_enabled">WiFi must be enabled to scan for networks</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="show_only_wps_networks">Show only WPS networks</string>
+    <string name="sort_by">Sort by:</string>
+    <string name="networks_found">Networks found: %d</string>
+    <string name="wps_count">WPS: %d</string>
+    <string name="channel_short">Ch %d</string>
+    <string name="wps_locked">WPS LOCKED</string>
+    <string name="wps">WPS</string>
+    <string name="band_2_4_ghz">2.4 GHz</string>
+    <string name="band_5_ghz">5 GHz</string>
+    <string name="band_6_ghz">6 GHz</string>
+    <string name="signal_strength">Signal strength</string>
+    <string name="scanning_for_networks">Scanning for networks…</string>
+    <string name="no_networks_found">No networks found</string>
+    <string name="sort_signal">Signal</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_channel">Channel</string>
+    <string name="sort_security">Security</string>
+    <string name="distance_format">%.1f m</string>
+
+    <!-- Network Detail Screen -->
+    <string name="network_details">Network Details</string>
+    <string name="back">Back</string>
+    <string name="wps_connection_methods">WPS Connection Methods</string>
+    <string name="standard_wps">Standard WPS</string>
+    <string name="standard_wps_description">Try common WPS pins for this network</string>
+    <string name="pixie_dust">Pixie Dust</string>
+    <string name="pixie_dust_description">Exploit WPS implementation vulnerability</string>
+    <string name="belkin_specific">Belkin Specific</string>
+    <string name="belkin_specific_description">Use Belkin-specific PIN generation</string>
+    <string name="advanced_options">Advanced Options</string>
+    <string name="brute_force">Brute Force</string>
+    <string name="brute_force_description">Try all possible PIN combinations (slow)</string>
+    <string name="warning_legal">Only test on networks you own or have permission to test. Unauthorized access is illegal.</string>
+    <string name="label_bssid">BSSID</string>
+    <string name="label_signal">Signal</string>
+    <string name="label_channel">Channel</string>
+    <string name="label_security">Security</string>
+    <string name="label_vendor">Vendor</string>
+    <string name="label_distance">Distance</string>
+    <string name="label_band">Band</string>
+    <string name="distance_meters_format">~%.1f meters</string>
+    <string name="unknown">Unknown</string>
+    <string name="wps_not_available">WPS Not Available</string>
+    <string name="wps_available">WPS Available</string>
+    <string name="wps_methods_unknown">Methods unknown (root required)</string>
+    <string name="wps_no_methods_detected">No standard methods detected</string>
+    <string name="supported_methods">Supported: %s</string>
+    <string name="method_pbc">PBC</string>
+    <string name="method_pin">PIN</string>
+    <string name="signal_dbm_format">%d dBm</string>
+    <string name="signal_strength_format">%d dBm (%s)</string>
+    <string name="channel_frequency_format">%d (%d MHz)</string>
+
+    <!-- Connection Progress Screen -->
+    <string name="wps_connection">WPS Connection</string>
+    <string name="cancel">Cancel</string>
+    <string name="testing_pin_progress">Testing PIN %d of %d</string>
+    <string name="stop">Stop</string>
+    <string name="done">Done</string>
+    <string name="close">Close</string>
+    <string name="retry">Retry</string>
+    <string name="testing_pin">Testing PIN: %s</string>
+    <string name="connected_successfully">Connected Successfully!</string>
+    <string name="connection_failed">Connection Failed</string>
+    <string name="initializing">Initializing…</string>
+    <string name="pin_found">PIN Found!</string>
+    <string name="password_format">Password: %s</string>
+    <string name="method_standard_wps_attack">Standard WPS Attack</string>
+    <string name="method_testing_pins">Testing %d PINs</string>
+    <string name="method_pixie_dust_attack">Pixie Dust Attack</string>
+    <string name="method_belkin_attack">Belkin-Specific Attack</string>
+    <string name="method_brute_force_attack">Brute Force Attack</string>
+    <string name="method_custom_pin_test">Custom PIN Test</string>
+    <string name="method_testing_pin_value">Testing PIN: %s</string>
+
+    <!-- Permission Screen -->
+    <string name="permissions_required">Permissions Required</string>
+    <string name="wifi_scanner_permissions">WiFi Scanner Permissions</string>
+    <string name="location_services_disabled">Location Services Disabled</string>
+    <string name="enable_location_for_wifi">Enable location services for WiFi scanning</string>
+    <string name="required_permissions">Required Permissions:</string>
+    <string name="hide_additional_permissions">Hide additional permissions</string>
+    <string name="show_additional_permissions">Show additional permissions</string>
+    <string name="grant_permissions">Grant Permissions</string>
+    <string name="open_app_settings">Open App Settings</string>
+    <string name="permission_info_message">These permissions are required by Android system to scan for WiFi networks. The app uses them only for legitimate WiFi scanning and WPS testing purposes.</string>
+    <string name="required">Required</string>
+    <string name="permission_precise_location">Precise Location</string>
+    <string name="permission_approximate_location">Approximate Location</string>
+    <string name="permission_background_location">Background Location</string>
+    <string name="permission_nearby_wifi_devices">Nearby WiFi Devices</string>
+    <string name="permission_wifi_state">WiFi State</string>
+    <string name="permission_change_wifi_state">Change WiFi State</string>
+    <string name="permission_network_state">Network State</string>
+    <string name="permission_change_network_state">Change Network State</string>
+    <string name="permission_read_storage">Read Storage</string>
+    <string name="permission_write_storage">Write Storage</string>
+    <string name="permission_internet_access">Internet Access</string>
+
+    <!-- PIN Selection Dialog -->
+    <string name="select_pins_to_test">Select PINs to Test</string>
+    <string name="algorithm_pins">Algorithm PINs</string>
+    <string name="custom_pin">Custom PIN</string>
+    <string name="enter_8_digit_pin">Enter 8-digit PIN</string>
+    <string name="digits_count">%d/8 digits</string>
+    <string name="calculate_checksum">Calculate Checksum</string>
+    <string name="selected_pins_count">Selected: %d PINs</string>
+    <string name="select_all">Select All</string>
+    <string name="start_testing">Start Testing</string>
+    <string name="default_wps_pin">Default WPS PIN</string>
+    <string name="loading_pins">Loading PINs…</string>
+
+    <!-- Error Messages -->
+    <string name="error_location_permission_required">Location permission required for WiFi scanning</string>
+    <string name="error_cannot_toggle_wifi">Cannot toggle WiFi on this Android version. Please enable WiFi from system settings.</string>
+
+    <!-- Permission Rationale Messages -->
+    <string name="rationale_location_android10">Location permission is required for WiFi scanning on Android 10+. This is an Android system requirement.</string>
+    <string name="rationale_location_android8">Location permission is required to scan for WiFi networks on Android 8+.</string>
+    <string name="rationale_location_default">Location permission is required to scan for WiFi networks.</string>
+    <string name="rationale_nearby_wifi">Permission to scan for nearby WiFi devices is required to discover WPS-enabled networks.</string>
+    <string name="rationale_wifi_state">WiFi state permission is required to check WiFi status and scan results.</string>
+    <string name="rationale_wifi_change">WiFi change permission is required to initiate WiFi scans.</string>
+    <string name="rationale_background_location">Background location is needed for continuous WiFi monitoring while the app is in background.</string>
+    <string name="rationale_default">This permission is required for the app to function properly.</string>
+
+    <!-- Android Version Messages -->
+    <string name="android_version_13">Android 13+ requires nearby devices permission for WiFi scanning</string>
+    <string name="android_version_12">Android 12+ requires precise location for WiFi scanning</string>
+    <string name="android_version_10">Android 10+ requires location permission and location services enabled for WiFi scanning</string>
+    <string name="android_version_8">Android 8+ requires location permission for WiFi scanning</string>
+    <string name="android_version_7">Android 7+ requires runtime permissions for WiFi scanning</string>
+
+    <!-- Root Access Messages -->
+    <string name="root_required_title">Root Access Required</string>
+    <string name="root_required_description">This app requires root access to perform WPS testing. Please root your device to use these features.</string>
+    <string name="root_required_message">Root access is required for this feature</string>
+</resources>

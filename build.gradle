@@ -1,0 +1,71 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.compose) apply false
+    id 'com.google.dagger.hilt.android' version '2.58' apply false
+    id 'com.diffplug.spotless' version '8.1.0'
+    id 'io.gitlab.arturbosch.detekt' version '1.23.8'
+    id 'checkstyle'
+}
+
+// Spotless configuration for code formatting
+spotless {
+    kotlin {
+        target '**/*.kt'
+        targetExclude '**/build/**/*.kt'
+        ktlint('1.0.1')
+            .editorConfigOverride([
+                'indent_size': '4',
+                'continuation_indent_size': '4',
+                'max_line_length': '120',
+                'insert_final_newline': 'true',
+                'ktlint_standard_no-wildcard-imports': 'disabled',
+                'ktlint_standard_function-naming': 'disabled',
+                'ktlint_standard_class-naming': 'disabled'
+            ])
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    java {
+        target '**/*.java'
+        targetExclude '**/build/**/*.java'
+        googleJavaFormat('1.19.2')
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    format 'misc', {
+        target '**/*.gradle', '**/*.md', '**/.gitignore'
+        targetExclude '**/build/**'
+        trimTrailingWhitespace()
+        leadingTabsToSpaces()
+        endWithNewline()
+    }
+}
+
+// Detekt configuration for Kotlin static analysis
+detekt {
+    buildUponDefaultConfig = true
+    config.setFrom("$projectDir/config/detekt/detekt.yml")
+    baseline = file("$projectDir/config/detekt/baseline.xml")
+    parallel = true
+
+    source.setFrom("src/main/java", "src/main/kotlin")
+}
+
+// Checkstyle configuration for Java static analysis
+checkstyle {
+    toolVersion = '10.12.7'
+    configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
+    maxWarnings = 0
+}
+
+tasks.withType(Checkstyle).configureEach {
+    reports {
+        xml.required = false
+        html.required = true
+    }
+}

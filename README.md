@@ -1,0 +1,129 @@
+# WiFi WPS WPA Tester - Open Source
+
+A limited, open-source version of the popular **WIFI WPS WPA TESTER** Android application for educational and security research purposes.
+
+## Disclaimer
+
+**This application is intended for educational and authorized security testing purposes only.**
+
+By using this software, you agree to the following:
+
+- **Legal Use Only**: This tool must only be used on networks you own or have explicit written permission to test. Unauthorized access to computer networks is illegal in most jurisdictions and may result in criminal prosecution.
+
+- **Educational Purpose**: This application is designed to help security researchers, network administrators, and enthusiasts understand WPS vulnerabilities and improve their network security.
+
+- **No Warranty**: This software is provided "as is" without any warranty of any kind. The developers are not responsible for any misuse, damage, or legal consequences resulting from the use of this tool.
+
+- **Responsible Disclosure**: If you discover vulnerabilities in networks you are authorized to test, please follow responsible disclosure practices.
+
+## Legal Notice
+
+Testing wireless networks without authorization is illegal under laws including but not limited to:
+- Computer Fraud and Abuse Act (CFAA) - United States
+- Computer Misuse Act - United Kingdom
+- Similar cybercrime laws in other countries
+
+**Always obtain proper authorization before testing any network.**
+
+## About This Project
+
+> **Note**: This tool was developed with the assistance of an LLM (Claude by Anthropic) based on specifications and guidance provided by **Alessandro Sangiorgi**. The codebase incorporates concepts and some existing code from the well-known **WIFI WPS WPA TESTER** application, which is owned by Alessandro Sangiorgi.
+>
+> **Important**: This is **not** the same codebase as the official WIFI WPS WPA TESTER app available on app stores. While it may contain portions of that code and follows similar architectural patterns, this open-source version is a separate project with different features and implementation details.
+
+## Features
+
+- **WiFi Network Scanning**: Discover nearby WiFi networks with WPS enabled
+- **WPS PIN Testing**: Test WPS PINs using various algorithms
+- **Pixie Dust Attack**: Attempt to recover WPS PIN using the Pixie Dust vulnerability (for vulnerable routers)
+- **Multiple PIN Algorithms**: Support for various vendor-specific PIN generation algorithms
+- **PIN Database**: Lookup known default PINs based on router MAC address
+- **Modern UI**: Built with Jetpack Compose and Material Design 3
+
+## Requirements
+
+- Android 7.0 (API 24) or higher
+- **Root access required** for WPS testing functionality
+- Location permission (required by Android for WiFi scanning)
+
+## How It Works
+
+This application tests WPS (WiFi Protected Setup) implementations for known vulnerabilities:
+
+1. **PIN-based Testing**: WPS uses an 8-digit PIN for authentication. Many routers use predictable PINs based on their MAC address or have known default PINs.
+
+2. **WPS Protocol Vulnerability (Bruteforce)**: The WPS protocol has a fundamental design flaw that makes bruteforce attacks practical:
+   - The 8-digit PIN is validated in two separate halves
+   - The router responds differently when the **first 4 digits are correct** vs incorrect
+   - The **last digit is a checksum** calculated from the first 7 digits
+   - This reduces the attack from 100,000,000 combinations (10^8) to only **11,000 attempts** (10,000 + 1,000)
+   - First half: 4 digits = 10,000 possible combinations
+   - Second half: 3 digits + checksum = 1,000 possible combinations
+
+3. **Pixie Dust Attack**: Some routers have weak random number generators in their WPS implementation, allowing the PIN to be computed from a single failed authentication attempt.
+
+4. **Algorithm-based PIN Generation**: Various router manufacturers use predictable algorithms to generate default WPS PINs, which can be computed from the router's MAC address.
+
+## Building from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/AlessandroSangworgi/wifi-wps-wpa-tester-opensource.git
+
+# Navigate to project directory
+cd wifi-wps-wpa-tester-opensource
+
+# Build debug APK
+./gradlew assembleDebug
+
+# Run tests
+./gradlew test
+```
+
+## Project Structure
+
+```
+app/src/main/java/sangiorgi/wps/opensource/
+├── algorithm/          # PIN generation algorithms
+├── connection/         # WPS connection handling
+│   ├── commands/       # Shell command builders
+│   ├── handlers/       # Connection handlers
+│   ├── models/         # Data models
+│   └── services/       # Business logic services
+├── data/               # Data layer (databases, assets)
+├── domain/             # Domain models
+├── permissions/        # Permission management
+├── ui/                 # Compose UI components
+│   ├── screens/        # Screen composables
+│   ├── viewmodels/     # ViewModels
+│   └── theme/          # Material theme
+└── utils/              # Utility classes
+```
+
+## Contributing
+
+Contributions are welcome! Please ensure your contributions:
+
+1. Follow the existing code style (enforced by Spotless)
+2. Include appropriate tests
+3. Do not introduce security vulnerabilities
+4. Respect the educational nature of this project
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Original concept and code by **Alessandro Sangiorgi** (WIFI WPS WPA TESTER)
+- [libsu](https://github.com/topjohnwu/libsu) for root shell operations
+- [wpa_supplicant](https://w1.fi/wpa_supplicant/) for WPS functionality
+- [pixiewps](https://github.com/wiire-a/pixiewps) for Pixie Dust attack implementation
+
+## Support
+
+This is an open-source educational project. For issues and feature requests, please use the GitHub issue tracker.
+
+**Remember: Use responsibly and legally. Always obtain proper authorization before testing any network.**
+
+---

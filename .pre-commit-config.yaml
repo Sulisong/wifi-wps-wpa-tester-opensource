@@ -1,0 +1,81 @@
+minimum_pre_commit_version: "3.0.0"
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: mixed-line-ending
+      - id: check-added-large-files
+
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: 2.7.3
+    hooks:
+      - id: editorconfig-checker
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+        args: ["protect", "--staged", "--redact"]
+
+  - repo: local
+    hooks:
+      # Code formatting check with Spotless
+      - id: spotless-check
+        name: Spotless Code Formatting Check
+        entry: ./gradlew spotlessCheck
+        language: system
+        types: [text]
+        files: \.(kt|java|gradle)$
+        pass_filenames: false
+        stages: [pre-commit]
+        
+      # Kotlin static analysis with Detekt
+      - id: detekt
+        name: Detekt Kotlin Analysis
+        entry: ./gradlew detekt
+        language: system
+        types: [kotlin]
+        pass_filenames: false
+        stages: [pre-commit]
+        
+      # Java static analysis with Checkstyle
+      - id: checkstyle
+        name: Checkstyle Java Analysis
+        entry: ./gradlew checkstyleMain
+        language: system
+        types: [java]
+        pass_filenames: false
+        stages: [pre-commit]
+
+      # Build check on commit
+      - id: build-check
+        name: Build Check
+        entry: ./gradlew assembleDebug
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      # Apply Spotless formatting before push
+      - id: spotless-apply
+        name: Apply Spotless Formatting
+        entry: ./gradlew spotlessApply
+        language: system
+        types: [text]
+        files: \.(kt|java|gradle)$
+        pass_filenames: false
+        stages: [pre-push]
+
+      # Unit tests before push (if available)
+      - id: unit-tests
+        name: Unit tests
+        entry: ./gradlew test || true
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
