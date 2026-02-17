@@ -64,6 +64,12 @@ This application tests WPS (WiFi Protected Setup) implementations for known vuln
 
 4. **Algorithm-based PIN Generation**: Various router manufacturers use predictable algorithms to generate default WPS PINs, which can be computed from the router's MAC address.
 
+## WPS Connection Library
+
+The core WPS connection logic (PIN testing, brute force, Pixie Dust, wpa_supplicant management) lives in a separate library:
+
+**[WpsConnectionLibrary](https://github.com/fulvius31/WpsConnectionLibrary)** — consumed via [JitPack](https://jitpack.io/#fulvius31/WpsConnectionLibrary)
+
 ## Building from Source
 
 ```bash
@@ -85,12 +91,8 @@ cd wifi-wps-wpa-tester-opensource
 ```
 app/src/main/java/sangiorgi/wps/opensource/
 ├── algorithm/          # PIN generation algorithms
-├── connection/         # WPS connection handling
-│   ├── commands/       # Shell command builders
-│   ├── handlers/       # Connection handlers
-│   ├── models/         # Data models
-│   └── services/       # Business logic services
 ├── data/               # Data layer (databases, assets)
+├── di/                 # Hilt dependency injection modules
 ├── domain/             # Domain models
 ├── permissions/        # Permission management
 ├── ui/                 # Compose UI components
@@ -99,6 +101,8 @@ app/src/main/java/sangiorgi/wps/opensource/
 │   └── theme/          # Material theme
 └── utils/              # Utility classes
 ```
+
+WPS connection logic (commands, handlers, services) is provided by the [WpsConnectionLibrary](https://github.com/fulvius31/WpsConnectionLibrary).
 
 ## Contributing
 
@@ -116,6 +120,7 @@ This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE v3.0 - see 
 ## Acknowledgments
 
 - Original concept and code by **Alessandro Sangiorgi** (WIFI WPS WPA TESTER)
+- [WpsConnectionLibrary](https://github.com/fulvius31/WpsConnectionLibrary) for WPS connection logic
 - [libsu](https://github.com/topjohnwu/libsu) for root shell operations
 - [wpa_supplicant](https://w1.fi/wpa_supplicant/) for WPS functionality
 - [pixiewps](https://github.com/wiire-a/pixiewps) for Pixie Dust attack implementation
