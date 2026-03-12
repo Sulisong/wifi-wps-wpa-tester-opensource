@@ -7,7 +7,6 @@ import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import sangiorgi.wps.lib.assets.WpaToolsInitializer
 import sangiorgi.wps.lib.assets.WpaToolsPaths
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -35,8 +34,6 @@ class PinDatabaseHelper @Inject constructor(
     private val databasePath: String = WpaToolsPaths(context).getPinDatabasePath()
 
     init {
-        // Wait for initialization to complete (assets extracted)
-        WpaToolsInitializer.waitForInitialization()
         openDatabase()
     }
 
